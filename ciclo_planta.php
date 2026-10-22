@@ -1,0 +1,251 @@
+
+<?php
+session_start();
+
+$usuarioLogueado = isset($_SESSION["id_usuario"]);
+$nombreUsuario = $_SESSION["nombre"] ?? "";
+$esAdmin = $usuarioLogueado && ($_SESSION["rol"] ?? "") === "Administrador";
+?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciclo de las plantas | AgroFuturo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <a class="logo" href="index_principal.php">
+        <img src="logo.png" alt="Logo AgroFuturo">
+
+        <span>
+            <strong>AGRO<span>FUTURO<span></strong> 
+            <small>Innovación y tecnología para el campo</small>
+        </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" type="button">☰</button>
+
+    <nav class="nav" id="nav">
+
+        <a href="index_principal.php">Inicio</a>
+        <a href="quienessomos.php">Quiénes Somos</a>
+        <a href="noticias.php">Novedades</a>
+        <a href="calendario.php">Calendario</a>
+        <a href="clima.php">Clima</a>
+        <a href="cultivos.php">Cultivos</a>
+        <a href="foro.php">Foro</a>
+        <a href="ciclo_planta.php" class="active">Ciclo planta</a>
+        <a href="contacto.php">Contáctanos</a>
+
+        <?php if ($usuarioLogueado): ?>
+
+            <span class="usuario-saludo">
+                Hola, <?= htmlspecialchars($nombreUsuario, ENT_QUOTES, "UTF-8") ?>
+            </span>
+
+            <?php if ($esAdmin): ?>
+                <a href="administrador/index.php" class="login-btn">Panel Admin</a>
+            <?php endif; ?>
+
+            <a href="logout.php" class="login-btn">Cerrar Sesión</a>
+
+        <?php else: ?>
+
+            <a href="iniciodesesion.php" class="login-btn">Iniciar Sesión</a>
+
+        <?php endif; ?>
+
+    </nav>
+
+</header>
+
+<section class="page-banner">
+
+    <div class="banner-overlay"></div>
+
+    <div class="banner-content">
+        <p>AGROFUTURO</p>
+
+        <h1>Ciclo de la planta</h1>
+
+        <span>
+            Conoce las principales etapas del desarrollo de una planta
+            y aprende cómo cuidar cada fase de su crecimiento.
+        </span>
+    </div>
+
+</section>
+
+<main class="page-content">
+
+    <section class="lunar-info">
+
+        <small>ETAPAS DEL CULTIVO</small>
+
+        <h2>Conoce el ciclo de una planta</h2>
+
+        <p class="calendar-description">
+            El ciclo de una planta comprende diferentes etapas que
+            permiten su desarrollo desde la semilla hasta la cosecha.
+            Conocer cada fase ayuda a realizar mejores cuidados y
+            planificar las actividades agrícolas.
+        </p>
+
+        <div class="lunar-steps">
+
+            <div class="lunar-step">
+                <span></span>
+                <h3>Germinación</h3>
+                <p>
+                    Es la etapa en la que la semilla comienza a desarrollarse
+                    y aparece la primera raíz. La humedad, temperatura y
+                    condiciones del suelo son importantes.
+                </p>
+            </div>
+
+            <div class="lunar-step">
+                <span></span>
+                <h3>Crecimiento</h3>
+                <p>
+                    La planta desarrolla hojas, tallos y raíces. Durante
+                    esta etapa necesita nutrientes, agua, luz y espacio
+                    suficiente.
+                </p>
+            </div>
+
+            <div class="lunar-step">
+                <span></span>
+                <h3>Floración</h3>
+                <p>
+                    En los cultivos que producen flores, esta etapa marca
+                    el inicio de procesos relacionados con la formación
+                    de frutos y semillas.
+                </p>
+            </div>
+
+            <div class="lunar-step">
+                <span></span>
+                <h3>Producción</h3>
+                <p>
+                    La planta comienza a formar frutos, semillas u otras
+                    partes aprovechables según el tipo de cultivo.
+                </p>
+            </div>
+
+            <div class="lunar-step">
+                <span></span>
+                <h3>Maduración</h3>
+                <p>
+                    El producto alcanza características propias de la
+                    madurez, como tamaño, color, textura o contenido
+                    adecuado para la cosecha.
+                </p>
+            </div>
+
+            <div class="lunar-step">
+                <span></span>
+                <h3>Cosecha</h3>
+                <p>
+                    Se recolecta la parte aprovechable del cultivo
+                    teniendo en cuenta su estado de madurez y el uso
+                    que tendrá posteriormente.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="calendar-section">
+
+        <small>CONSEJOS PARA PRODUCTORES</small>
+
+        <h2>Buenas prácticas agrícolas</h2>
+
+        <div class="calendar-grid">
+
+            <div class="calendar-card">
+                <span class="moon-icon"></span>
+                <h3>Conoce tu suelo</h3>
+                <p>
+                    Observa el tipo de suelo, su humedad, drenaje y
+                    características generales antes de elegir el cultivo.
+                </p>
+            </div>
+
+            <div class="calendar-card">
+                <span class="moon-icon"></span>
+                <h3>Usa el agua correctamente</h3>
+                <p>
+                    Evita tanto la falta como el exceso de agua. Ajusta
+                    el riego según el cultivo, el clima y las condiciones
+                    del suelo.
+                </p>
+            </div>
+
+            <div class="calendar-card">
+                <span class="moon-icon"></span>
+                <h3>Controla la iluminación</h3>
+                <p>
+                    Identifica las necesidades de luz de cada cultivo y
+                    selecciona un lugar apropiado para su desarrollo.
+                </p>
+            </div>
+
+            <div class="calendar-card">
+                <span class="moon-icon"></span>
+                <h3>Observa las plantas</h3>
+                <p>
+                    Revisa periódicamente las hojas, tallos y frutos para
+                    identificar cambios que puedan indicar plagas,
+                    enfermedades o problemas de crecimiento.
+                </p>
+            </div>
+
+            <div class="calendar-card">
+                <span class="moon-icon"></span>
+                <h3>Aprovecha los residuos orgánicos</h3>
+                <p>
+                    Algunos residuos vegetales pueden aprovecharse para
+                    elaborar compost y contribuir al mejoramiento del suelo.
+                </p>
+            </div>
+
+            <div class="calendar-card">
+                <span class="moon-icon"></span>
+                <h3>Lleva registros</h3>
+                <p>
+                    Anota las fechas de siembra, riego, fertilización,
+                    aparición de plagas y cosecha para conocer mejor
+                    el comportamiento de tus cultivos.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <span>© 2026 AgroFuturo - Todos los derechos reservados</span>
+
+    <div>
+        Síguenos en: &nbsp; ◎ &nbsp; f &nbsp; ▶ &nbsp; ◉
+    </div>
+
+    <i>Juntos cultivamos el futuro ♡</i>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

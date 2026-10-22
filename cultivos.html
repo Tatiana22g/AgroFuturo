@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cultivos | AgroFuturo</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <a class="logo" href="index_principal.php">
+
+        <img src="logo.png" alt="Logo AgroFuturo">
+
+        <span>
+            <strong>AGRO<span>FUTURO</span></strong>
+            <small>Innovación y tecnología para el campo</small>
+        </span>
+
+    </a>
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+<nav class="nav">
+    <a href="index_principal.php">Inicio</a>
+
+    <a href="quienessomos.php">Quiénes Somos</a>
+
+    <a href="noticias.php">Novedades</a>
+
+    <a href="calendario.php">Calendario</a>
+
+    <a href="clima.php">Clima</a>
+
+    <a href="cultivos.php">Cultivos</a>
+
+    <a href="foro.php">Foro</a>
+
+    <a href="ciclo_planta.php">Ciclo planta</a>
+
+    <a href="contacto.php">Contáctanos</a>
+
+    <a href="iniciodesesion.php">Iniciar Sesión</a>
+
+</nav>
+
+</header>
+
+<section class="page-banner">
+
+    <div class="banner-overlay"></div>
+
+    <div class="banner-content">
+
+        <p>AGROFUTURO</p>
+
+        <h1>Cultivos</h1>
+
+        <span>
+            Conoce, clasifica y planifica mejor tus cultivos.
+        </span>
+
+    </div>
+
+</section>
+
+<main class="page-content">
+
+    <section class="crops-section">
+
+        <small>CONOCE TUS CULTIVOS</small>
+
+        <h2>Categorías de cultivos</h2>
+
+        <p class="section-description">
+            Explora diferentes tipos de cultivos y encuentra información
+            relacionada con sus características, cuidados y cosecha.
+        </p>
+
+        <div class="crop-categories">
+
+            <button type="button" class="category-btn active" data-category="todos">
+                Todos
+            </button>
+
+            <button type="button" class="category-btn" data-category="cereales">
+                Cereales
+            </button>
+
+            <button type="button" class="category-btn" data-category="hortalizas">
+                Hortalizas
+            </button>
+
+            <button type="button" class="category-btn" data-category="frutas">
+                Frutas
+            </button>
+
+            <button type="button" class="category-btn" data-category="leguminosas">
+                Leguminosas
+            </button>
+
+            <button type="button" class="category-btn" data-category="aromaticas">
+                Aromáticas
+            </button>
+
+            <button type="button" class="category-btn" data-category="tuberculos">
+                Tubérculos y raíces
+            </button>
+
+        </div>
+
+        <div class="crop-grid" id="cropGrid">
+
+            <article class="crop-card" data-category="cereales">
+                <span class="crop-icon">MAÍZ</span>
+                <h3>Maíz</h3>
+                <p>Cereal de gran importancia para la alimentación y la producción agrícola.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Directa en el suelo.</span></div>
+                    <div><strong>Duración</strong><span>3 a 5 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena exposición solar.</span></div>
+                    <div><strong>Riego</strong><span>Regular, evitando encharcamientos.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, profundo y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y mantener humedad adecuada.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades del cultivo.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando las mazorcas alcanzan la madurez adecuada.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="cereales">
+                <span class="crop-icon">ARROZ</span>
+                <h3>Arroz</h3>
+                <p>Cereal ampliamente utilizado en la alimentación y producido en diferentes regiones.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede realizarse directamente o mediante semillero.</span></div>
+                    <div><strong>Duración</strong><span>3 a 6 meses según la variedad.</span></div>
+                    <div><strong>Luz</strong><span>Requiere buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Necesita un manejo adecuado del agua.</span></div>
+                    <div><strong>Suelo</strong><span>Preferiblemente fértil y con buena capacidad de retención.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas, agua y estado de las plantas.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar periódicamente hojas y tallos.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando los granos alcanzan la madurez adecuada.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="cereales">
+                <span class="crop-icon">TRIGO</span>
+                <h3>Trigo</h3>
+                <p>Cereal utilizado principalmente para la elaboración de harinas y diferentes alimentos.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Generalmente se realiza directamente en el suelo.</span></div>
+                    <div><strong>Duración</strong><span>4 a 7 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Moderado y según las condiciones climáticas.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y revisar el desarrollo de las plantas.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando las espigas y granos están maduros.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="cereales">
+                <span class="crop-icon">AVENA</span>
+                <h3>Avena</h3>
+                <p>Cereal utilizado para alimentación humana y animal.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Directa en suelo preparado.</span></div>
+                    <div><strong>Duración</strong><span>3 a 6 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular según el clima y el suelo.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y mantener humedad adecuada.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar hojas y tallos.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando los granos alcanzan la madurez.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="hortalizas">
+                <span class="crop-icon">TOMATE</span>
+                <h3>Tomate</h3>
+                <p>Hortaliza que requiere buena iluminación, riego adecuado y cuidado constante.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Se puede iniciar en semillero y posteriormente trasplantar.</span></div>
+                    <div><strong>Duración</strong><span>3 a 4 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena exposición solar.</span></div>
+                    <div><strong>Riego</strong><span>Regular, evitando mojar excesivamente las hojas.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, suelto y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Utilizar soporte, controlar malezas y retirar partes dañadas.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando el fruto alcanza el grado de madurez deseado.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="hortalizas">
+                <span class="crop-icon">ZANAHORIA</span>
+                <h3>Zanahoria</h3>
+                <p>Hortaliza de raíz que puede cultivarse en diferentes condiciones agrícolas.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Directa en el suelo.</span></div>
+                    <div><strong>Duración</strong><span>2 a 4 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Frecuente y moderado.</span></div>
+                    <div><strong>Suelo</strong><span>Suelto, profundo y sin piedras.</span></div>
+                    <div><strong>Cuidados</strong><span>Mantener el suelo húmedo y controlar malezas.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar hojas y raíces.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando la raíz alcanza el tamaño adecuado.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="hortalizas">
+                <span class="crop-icon">LECHUGA</span>
+                <h3>Lechuga</h3>
+                <p>Cultivo de ciclo relativamente corto y de consumo frecuente.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede comenzar en semillero o directamente.</span></div>
+                    <div><strong>Duración</strong><span>1 a 2 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación, evitando exceso de calor.</span></div>
+                    <div><strong>Riego</strong><span>Frecuente y ligero.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, húmedo y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y mantener humedad constante.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y daños en las hojas.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando las hojas alcanzan el tamaño adecuado.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="hortalizas">
+                <span class="crop-icon">CEBOLLA</span>
+                <h3>Cebolla</h3>
+                <p>Hortaliza utilizada ampliamente como alimento y condimento.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede realizarse mediante semillas o plántulas.</span></div>
+                    <div><strong>Duración</strong><span>3 a 5 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena exposición solar.</span></div>
+                    <div><strong>Riego</strong><span>Regular sin generar encharcamientos.</span></div>
+                    <div><strong>Suelo</strong><span>Suelto, fértil y bien drenado.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y mantener humedad adecuada.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando el bulbo ha alcanzado su desarrollo.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="hortalizas">
+                <span class="crop-icon">PEPINO</span>
+                <h3>Pepino</h3>
+                <p>Hortaliza de crecimiento rápido que necesita buena disponibilidad de agua.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Directa o mediante semillero.</span></div>
+                    <div><strong>Duración</strong><span>2 a 3 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Buena exposición solar.</span></div>
+                    <div><strong>Riego</strong><span>Frecuente y constante.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, húmedo y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Guiar las plantas y controlar malezas.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando los frutos alcanzan el tamaño adecuado.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">FRESA</span>
+                <h3>Fresa</h3>
+                <p>Fruta que necesita condiciones adecuadas de humedad, iluminación y suelo.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Principalmente mediante plantas o estolones.</span></div>
+                    <div><strong>Duración</strong><span>Puede producir durante varios meses.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Frecuente y controlado.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, ligero y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Retirar hojas dañadas y controlar malezas.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar hongos, insectos y daños en frutos.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando el fruto presenta coloración y madurez adecuadas.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">MANGO</span>
+                <h3>Mango</h3>
+                <p>Fruto tropical que se desarrolla principalmente en condiciones cálidas.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede establecerse mediante plantas injertadas.</span></div>
+                    <div><strong>Duración</strong><span>Los árboles pueden tardar varios años en producir.</span></div>
+                    <div><strong>Luz</strong><span>Necesita abundante luz solar.</span></div>
+                    <div><strong>Riego</strong><span>Regular durante el establecimiento.</span></div>
+                    <div><strong>Suelo</strong><span>Profundo, fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Realizar podas y controlar malezas.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando los frutos alcanzan su madurez adecuada.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">BANANO</span>
+                <h3>Banano</h3>
+                <p>Fruto tropical de gran importancia alimentaria y comercial.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Se establece principalmente mediante material vegetativo.</span></div>
+                    <div><strong>Duración</strong><span>El primer ciclo puede durar alrededor de 9 a 15 meses.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Requiere disponibilidad constante de agua.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, profundo y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Eliminar hojas secas y controlar malezas.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando los frutos alcanzan el desarrollo apropiado.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">MORA</span>
+                <h3>Mora</h3>
+                <p>Fruta de clima fresco utilizada para consumo directo y elaboración de productos.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede propagarse mediante material vegetal.</span></div>
+                    <div><strong>Duración</strong><span>Puede producir durante varios años con manejo adecuado.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular y sin encharcamientos.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, profundo y bien drenado.</span></div>
+                    <div><strong>Cuidados</strong><span>Utilizar soporte, podar y controlar malezas.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar frutos, hojas y tallos.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando los frutos presentan color y madurez adecuados.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">MARACUYÁ</span>
+                <h3>Maracuyá</h3>
+                <p>Fruta tropical utilizada para bebidas, postres y consumo directo.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Principalmente mediante semillas o plantas.</span></div>
+                    <div><strong>Duración</strong><span>Puede comenzar a producir después de varios meses.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular y controlado.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Necesita soporte para sus ramas y control de malezas.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando los frutos alcanzan su madurez.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">PIÑA</span>
+                <h3>Piña</h3>
+                <p>Fruta tropical cultivada en diferentes regiones de clima cálido.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Se realiza principalmente mediante material vegetativo.</span></div>
+                    <div><strong>Duración</strong><span>Entre 12 y 24 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Moderado, dependiendo del clima.</span></div>
+                    <div><strong>Suelo</strong><span>Ligero, ácido y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y evitar exceso de agua.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar raíces, hojas y frutos.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando el fruto desarrolla características de madurez.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">PAPAYA</span>
+                <h3>Papaya</h3>
+                <p>Fruta tropical de crecimiento relativamente rápido.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Principalmente mediante semillas.</span></div>
+                    <div><strong>Duración</strong><span>Puede comenzar a producir aproximadamente entre 7 y 12 meses.</span></div>
+                    <div><strong>Luz</strong><span>Necesita abundante luz solar.</span></div>
+                    <div><strong>Riego</strong><span>Regular sin encharcamientos.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, ligero y bien drenado.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y revisar hojas y frutos.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando la fruta cambia de color y alcanza madurez.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">GUAYABA</span>
+                <h3>Guayaba</h3>
+                <p>Fruta tropical utilizada para consumo fresco y diferentes preparaciones.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede establecerse mediante semillas o plantas.</span></div>
+                    <div><strong>Duración</strong><span>Los árboles pueden producir después de algunos años.</span></div>
+                    <div><strong>Luz</strong><span>Buena exposición solar.</span></div>
+                    <div><strong>Riego</strong><span>Regular durante el establecimiento.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Podar y controlar malezas alrededor del árbol.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando el fruto presenta características de madurez.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">LULO</span>
+                <h3>Lulo</h3>
+                <p>Fruta característica de zonas tropicales y de clima moderado.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede iniciarse en semillero y luego trasplantarse.</span></div>
+                    <div><strong>Duración</strong><span>Puede producir después de varios meses.</span></div>
+                    <div><strong>Luz</strong><span>Prefiere buena iluminación sin exceso de calor.</span></div>
+                    <div><strong>Riego</strong><span>Regular y sin encharcamientos.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, húmedo y bien drenado.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y sostener la planta cuando sea necesario.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar hojas, tallos y frutos.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando el fruto alcanza su color y madurez característicos.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">TOMATE DE ÁRBOL</span>
+                <h3>Tomate de árbol</h3>
+                <p>Fruto de clima fresco utilizado en bebidas, preparaciones y consumo directo.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede comenzar mediante semillas o plantas.</span></div>
+                    <div><strong>Duración</strong><span>Puede comenzar a producir después de varios meses.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular, evitando exceso de humedad.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, profundo y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas, podar y vigilar el estado de la planta.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar hojas y frutos periódicamente.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando los frutos alcanzan su color característico.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">GRANADILLA</span>
+                <h3>Granadilla</h3>
+                <p>Fruta tropical de sabor dulce y utilizada principalmente para consumo fresco.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede realizarse mediante semillas.</span></div>
+                    <div><strong>Duración</strong><span>La producción comienza después de varios meses.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular y sin encharcamientos.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Proporcionar soporte y controlar malezas.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar hojas y frutos.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando el fruto alcanza su madurez característica.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">AGUACATE</span>
+                <h3>Aguacate</h3>
+                <p>Fruto de gran importancia alimentaria y agrícola en diferentes regiones.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Se recomienda establecer plantas adecuadas para cultivo.</span></div>
+                    <div><strong>Duración</strong><span>La producción depende de la variedad y manejo.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular, evitando encharcamientos.</span></div>
+                    <div><strong>Suelo</strong><span>Profundo, fértil y con excelente drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Realizar podas y controlar malezas.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades de raíces y hojas.</span></div>
+                    <div><strong>Cosecha</strong><span>Según la variedad y el grado de desarrollo del fruto.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">NARANJA</span>
+                <h3>Naranja</h3>
+                <p>Fruta cítrica utilizada para consumo fresco y elaboración de jugos.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Se recomienda establecer árboles jóvenes de buena calidad.</span></div>
+                    <div><strong>Duración</strong><span>La producción depende de la variedad y edad del árbol.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena exposición solar.</span></div>
+                    <div><strong>Riego</strong><span>Regular, especialmente durante períodos secos.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Podar, fertilizar y controlar malezas.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando el fruto alcanza color, tamaño y madurez adecuados.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">LIMÓN</span>
+                <h3>Limón</h3>
+                <p>Cítrico utilizado ampliamente en alimentación y diferentes preparaciones.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede establecerse mediante plantas.</span></div>
+                    <div><strong>Duración</strong><span>La producción depende de la variedad y manejo.</span></div>
+                    <div><strong>Luz</strong><span>Buena exposición solar.</span></div>
+                    <div><strong>Riego</strong><span>Regular y controlado.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y bien drenado.</span></div>
+                    <div><strong>Cuidados</strong><span>Podar y controlar malezas.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar hojas, frutos y ramas.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando el fruto alcanza tamaño y madurez adecuados.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">MANDARINA</span>
+                <h3>Mandarina</h3>
+                <p>Fruta cítrica de sabor dulce y aroma característico.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Mediante plantas jóvenes adecuadas para cultivo.</span></div>
+                    <div><strong>Duración</strong><span>Depende de la variedad y edad del árbol.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular según las condiciones climáticas.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y realizar podas cuando sean necesarias.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando los frutos presentan color y madurez adecuados.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">SANDÍA</span>
+                <h3>Sandía</h3>
+                <p>Fruto de gran contenido de agua que se desarrolla principalmente en climas cálidos.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Directa o mediante semillero.</span></div>
+                    <div><strong>Duración</strong><span>3 a 4 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Necesita abundante luz solar.</span></div>
+                    <div><strong>Riego</strong><span>Regular durante el desarrollo.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, ligero y bien drenado.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y mantener humedad adecuada.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar hojas y frutos.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando presenta señales de madurez adecuadas.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">MELÓN</span>
+                <h3>Melón</h3>
+                <p>Fruto de clima cálido utilizado principalmente para consumo fresco.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Directa o mediante semillero.</span></div>
+                    <div><strong>Duración</strong><span>3 a 4 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena exposición solar.</span></div>
+                    <div><strong>Riego</strong><span>Regular durante el crecimiento.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y vigilar el desarrollo de los frutos.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar hojas, tallos y frutos.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando el fruto presenta señales de madurez.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="frutas">
+                <span class="crop-icon">UCHUVA</span>
+                <h3>Uchuva</h3>
+                <p>Fruta pequeña de sabor dulce y utilizada para consumo fresco y diferentes preparaciones.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede iniciarse mediante semillero.</span></div>
+                    <div><strong>Duración</strong><span>Puede comenzar a producir después de varios meses.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular sin exceso de humedad.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y proporcionar soporte cuando sea necesario.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando el fruto alcanza su coloración característica.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="leguminosas">
+                <span class="crop-icon">FRÍJOL</span>
+                <h3>Fríjol</h3>
+                <p>Leguminosa de gran importancia alimentaria y cultivada en diferentes regiones.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Directa en el suelo.</span></div>
+                    <div><strong>Duración</strong><span>2 a 4 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular, evitando encharcamientos.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y bien drenado.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y proporcionar soporte si es necesario.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando las vainas o semillas alcanzan la madurez.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="leguminosas">
+                <span class="crop-icon">ARVEJA</span>
+                <h3>Arveja</h3>
+                <p>Leguminosa utilizada como alimento y cultivada principalmente en zonas de clima moderado.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Directa en el suelo.</span></div>
+                    <div><strong>Duración</strong><span>2 a 4 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular sin encharcamientos.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, suelto y bien drenado.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y colocar soporte.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar hojas, tallos y vainas.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando las vainas presentan el desarrollo adecuado.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="leguminosas">
+                <span class="crop-icon">LENTEJA</span>
+                <h3>Lenteja</h3>
+                <p>Leguminosa utilizada principalmente como fuente de proteína vegetal.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Directa en suelo preparado.</span></div>
+                    <div><strong>Duración</strong><span>3 a 5 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Moderado.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y exceso de humedad.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando las vainas y semillas están maduras.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="leguminosas">
+                <span class="crop-icon">GARBANZO</span>
+                <h3>Garbanzo</h3>
+                <p>Leguminosa utilizada en diferentes preparaciones alimentarias.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Directa en el suelo.</span></div>
+                    <div><strong>Duración</strong><span>3 a 5 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Moderado.</span></div>
+                    <div><strong>Suelo</strong><span>Bien drenado y de textura adecuada.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y evitar exceso de agua.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando las vainas y semillas están maduras.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="aromaticas">
+                <span class="crop-icon">ALBAHACA</span>
+                <h3>Albahaca</h3>
+                <p>Planta aromática utilizada principalmente en la cocina.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede realizarse mediante semillas.</span></div>
+                    <div><strong>Duración</strong><span>2 a 3 meses para obtener plantas desarrolladas.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular y moderado.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Realizar podas y retirar flores cuando sea necesario.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar hojas y tallos.</span></div>
+                    <div><strong>Cosecha</strong><span>Cortar hojas y ramas según necesidad.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="aromaticas">
+                <span class="crop-icon">CILANTRO</span>
+                <h3>Cilantro</h3>
+                <p>Planta aromática ampliamente utilizada en la cocina.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Directa en el suelo o recipiente.</span></div>
+                    <div><strong>Duración</strong><span>1 a 3 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Frecuente y ligero.</span></div>
+                    <div><strong>Suelo</strong><span>Suelto y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y evitar exceso de humedad.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar hojas y tallos.</span></div>
+                    <div><strong>Cosecha</strong><span>Cortar hojas cuando la planta tenga buen desarrollo.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="aromaticas">
+                <span class="crop-icon">ROMERO</span>
+                <h3>Romero</h3>
+                <p>Planta aromática utilizada en cocina y diferentes preparaciones.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Puede propagarse mediante esquejes o plantas.</span></div>
+                    <div><strong>Duración</strong><span>Planta perenne con varios años de vida.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena exposición solar.</span></div>
+                    <div><strong>Riego</strong><span>Moderado, evitando exceso de agua.</span></div>
+                    <div><strong>Suelo</strong><span>Ligero y con excelente drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Podar y evitar encharcamientos.</span></div>
+                    <div><strong>Plagas</strong><span>Revisar hojas y tallos.</span></div>
+                    <div><strong>Cosecha</strong><span>Se pueden cortar ramas según necesidad.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="aromaticas">
+                <span class="crop-icon">PEREJIL</span>
+                <h3>Perejil</h3>
+                <p>Planta aromática utilizada como condimento y en diferentes preparaciones.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Principalmente mediante semillas.</span></div>
+                    <div><strong>Duración</strong><span>2 a 4 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular y moderado.</span></div>
+                    <div><strong>Suelo</strong><span>Fértil, suelto y bien drenado.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y mantener humedad adecuada.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar hojas y tallos.</span></div>
+                    <div><strong>Cosecha</strong><span>Cortar las hojas externas según necesidad.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="tuberculos">
+                <span class="crop-icon">PAPA</span>
+                <h3>Papa</h3>
+                <p>Tubérculo de gran importancia alimentaria y agrícola.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Mediante tubérculos-semilla.</span></div>
+                    <div><strong>Duración</strong><span>3 a 5 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular y según las condiciones del suelo.</span></div>
+                    <div><strong>Suelo</strong><span>Suelto, fértil y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y realizar aporque cuando corresponda.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando las plantas completan su ciclo y los tubérculos tienen el tamaño adecuado.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="tuberculos">
+                <span class="crop-icon">YUCA</span>
+                <h3>Yuca</h3>
+                <p>Raíz de importancia alimentaria y agrícola en regiones tropicales.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Principalmente mediante estacas o esquejes.</span></div>
+                    <div><strong>Duración</strong><span>8 a 18 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Necesita buena exposición solar.</span></div>
+                    <div><strong>Riego</strong><span>Moderado según las condiciones climáticas.</span></div>
+                    <div><strong>Suelo</strong><span>Suelto y con buen drenaje.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas durante las primeras etapas.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando las raíces alcanzan el tamaño adecuado.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="tuberculos">
+                <span class="crop-icon">BATATA</span>
+                <h3>Batata</h3>
+                <p>Raíz de consumo alimentario que se adapta a diferentes condiciones de cultivo.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Mediante esquejes o material vegetal.</span></div>
+                    <div><strong>Duración</strong><span>3 a 5 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular durante el establecimiento.</span></div>
+                    <div><strong>Suelo</strong><span>Suelto, fértil y bien drenado.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y mantener humedad adecuada.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando las raíces alcanzan el tamaño adecuado.</span></div>
+                </div>
+            </article>
+
+            <article class="crop-card" data-category="tuberculos">
+                <span class="crop-icon">ÑAME</span>
+                <h3>Ñame</h3>
+                <p>Tubérculo de importancia alimentaria cultivado principalmente en regiones cálidas.</p>
+
+                <div class="crop-info">
+                    <div><strong>Siembra</strong><span>Mediante trozos de tubérculo o material de siembra.</span></div>
+                    <div><strong>Duración</strong><span>7 a 12 meses aproximadamente.</span></div>
+                    <div><strong>Luz</strong><span>Buena iluminación.</span></div>
+                    <div><strong>Riego</strong><span>Regular según las condiciones climáticas.</span></div>
+                    <div><strong>Suelo</strong><span>Profundo, fértil y bien drenado.</span></div>
+                    <div><strong>Cuidados</strong><span>Controlar malezas y proporcionar soporte a las plantas.</span></div>
+                    <div><strong>Plagas</strong><span>Vigilar insectos y enfermedades.</span></div>
+                    <div><strong>Cosecha</strong><span>Cuando la planta completa su ciclo de desarrollo.</span></div>
+                </div>
+            </article>
+
+        </div>
+
+        <p id="noResults" class="no-results">
+            No se encontraron cultivos en esta categoría.
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <span>
+        © 2026 AgroFuturo - Todos los derechos reservados
+    </span>
+
+    <div>
+        Síguenos en: &nbsp; ◎ &nbsp; f &nbsp; ▶ &nbsp; ◉
+    </div>
+
+    <i>
+        Juntos cultivamos el futuro ♡
+    </i>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

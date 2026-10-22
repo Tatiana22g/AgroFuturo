@@ -1,0 +1,327 @@
+
+<?php
+
+session_start();
+
+$usuarioLogueado = isset($_SESSION["id_usuario"]);
+
+$nombreUsuario = $_SESSION["nombre"] ?? "";
+
+$esAdmin = $usuarioLogueado && ($_SESSION["rol"] ?? "") === "admin";
+
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Quiénes Somos | AgroFuturo</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <a
+        class="logo"
+        href="index_principal.php"
+    >
+
+        <img
+            src="logo.png"
+            alt="Logo AgroFuturo"
+        >
+
+        <span>
+
+            <strong>
+                AGRO<span>FUTURO</span>
+            </strong>
+
+            <small>
+                Innovación y tecnología para el campo
+            </small>
+
+        </span>
+
+    </a>
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Abrir menú"
+    >
+        ☰
+    </button>
+
+    <nav class="nav" id="nav">
+
+        <a href="index_principal.php" >
+            Inicio
+        </a>
+
+        <a
+            href="quienessomos.php"
+            class="active"
+        >
+            Quiénes Somos
+        </a>
+
+        <a href="noticias.php">
+            Novedades
+        </a>
+
+        <a href="calendario.php">
+            Calendario
+        </a>
+
+        <a href="clima.php">
+            Clima
+        </a>
+
+        <a href="cultivos.php">
+            Cultivos
+        </a>
+
+        <a href="foro.php">
+            Foro
+        </a>
+
+        <a href="ciclo_planta.php">
+            Ciclo planta
+        </a>
+
+        <a href="contacto.php">
+            Contáctanos
+        </a>
+
+        <?php if ($esAdmin): ?>
+
+            <span class="usuario-saludo">
+                Hola, <?php echo htmlspecialchars($nombreUsuario, ENT_QUOTES, 'UTF-8'); ?>
+            </span>
+
+            <a
+                href="admin/dashboard.php"
+                class="login-btn"
+            >
+                Panel Admin
+            </a>
+
+            <a
+                href="logout.php"
+                class="login-btn"
+            >
+                Cerrar Sesión
+            </a>
+
+        <?php elseif ($usuarioLogueado): ?>
+
+            <span class="usuario-saludo">
+                Hola, <?php echo htmlspecialchars($nombreUsuario, ENT_QUOTES, 'UTF-8'); ?>
+            </span>
+
+            <a
+                href="logout.php"
+                class="login-btn"
+            >
+                Cerrar Sesión
+            </a>
+
+        <?php else: ?>
+
+            <a
+                href="iniciodesesion.php"
+                class="login-btn"
+            >
+                Iniciar Sesión
+            </a>
+
+        <?php endif; ?>
+
+    </nav>
+
+</header>
+
+
+<section class="page-banner">
+
+    <img
+        src="granjero.png"
+        alt="Campo agrícola AgroFuturo"
+        class="hero-image"
+    >
+
+    <div class="banner-overlay"></div>
+
+    <div class="banner-content">
+
+        <p>
+            AGROFUTURO
+        </p>
+
+        <h1>
+            Quiénes Somos
+        </h1>
+
+        <span>
+            Conectando tecnología, innovación y campo.
+        </span>
+
+    </div>
+
+</section>
+
+
+<main class="page-content">
+
+    <section class="about-section">
+
+        <div class="about-text">
+
+            <small>
+                CONÓCENOS
+            </small>
+
+            <h2>
+                Somos el futuro del campo
+            </h2>
+
+            <p>
+                AgroFuturo es una plataforma creada para apoyar a los
+                agricultores mediante herramientas digitales, información
+                confiable y soluciones tecnológicas.
+            </p>
+
+            <p>
+                Nuestro propósito es facilitar la planificación de los
+                cultivos y ayudar a las comunidades rurales a tomar
+                mejores decisiones.
+            </p>
+
+        </div>
+
+        <div class="about-card">
+
+            <h3>
+                Nuestra misión
+            </h3>
+
+            <p>
+                Impulsar un campo más moderno, sostenible y conectado
+                mediante la tecnología.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="values">
+
+        <h2>
+            Lo que nos representa
+        </h2>
+
+        <div class="cards">
+
+            <article class="card">
+
+                <h3>
+                    Innovación
+                </h3>
+
+                <p>
+                    Buscamos nuevas formas de mejorar el trabajo agrícola.
+                </p>
+
+            </article>
+
+            <article class="card">
+
+                <h3>
+                    Compromiso
+                </h3>
+
+                <p>
+                    Trabajamos pensando en las necesidades de las comunidades.
+                </p>
+
+            </article>
+
+            <article class="card">
+
+                <h3>
+                    Sostenibilidad
+                </h3>
+
+                <p>
+                    Promovemos prácticas que cuiden el campo y el medio ambiente.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <span>
+        © 2026 AgroFuturo - Todos los derechos reservados
+    </span>
+
+    <div>
+        Síguenos en:
+        &nbsp; ◎ &nbsp;
+        f &nbsp;
+        ▶ &nbsp;
+        ◉
+    </div>
+
+    <i>
+        Juntos cultivamos el futuro
+    </i>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

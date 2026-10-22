@@ -1,0 +1,289 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f4f7f2;
+    color: #243b2d;
+}
+
+.header {
+    height: 80px;
+    background: #17352d;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 35px;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.admin-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.btn-cerrar {
+    background: #4d8f38;
+    color: white;
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-cerrar:hover {
+    background: #67a64f;
+}
+
+.contenedor {
+    display: flex;
+    min-height: calc(100vh - 80px);
+}
+
+.sidebar {
+    width: 245px;
+    background: white;
+    padding: 30px 18px;
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.04);
+}
+
+.sidebar h3 {
+    font-size: 14px;
+    color: #829084;
+    text-transform: uppercase;
+    margin: 0 0 22px 12px;
+    letter-spacing: 1px;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: #405447;
+    padding: 14px 15px;
+    border-radius: 9px;
+    margin-bottom: 7px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.activo {
+    background: #e9f3e5;
+    color: #397b30;
+    font-weight: 700;
+}
+
+.contenido {
+    flex: 1;
+    padding: 40px;
+    min-width: 0;
+}
+
+.bienvenida {
+    background: linear-gradient(120deg, #17352d, #386d42);
+    color: white;
+    padding: 35px;
+    border-radius: 18px;
+    margin-bottom: 35px;
+}
+
+.bienvenida h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.bienvenida p {
+    color: #e0ebdf;
+}
+
+.contenido h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    margin-bottom: 22px;
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.tarjeta {
+    background: white;
+    padding: 27px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #243b2d;
+    border: 1px solid #e7ece5;
+    transition: 0.3s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(29, 69, 39, 0.10);
+    border-color: #a8c99c;
+}
+
+.icono {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.tarjeta h3 {
+    font-size: 19px;
+    margin-bottom: 9px;
+}
+
+.tarjeta p {
+    color: #748174;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.tarjeta span {
+    color: #4d8f38;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.informacion {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 30px;
+    border: 1px solid #e7ece5;
+}
+
+.informacion h3 {
+    margin-bottom: 10px;
+}
+
+.informacion p {
+    color: #748174;
+    line-height: 1.7;
+}
+
+.tabla-contenedor {
+    background: white;
+    border-radius: 14px;
+    padding: 22px;
+    overflow-x: auto;
+    border: 1px solid #e7ece5;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+th {
+    background: #e9f3e5;
+    color: #315c34;
+    text-align: left;
+    padding: 15px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #edf0eb;
+    font-size: 14px;
+}
+
+tr:hover td {
+    background: #fafcf9;
+}
+
+.btn {
+    display: inline-block;
+    background: #4d8f38;
+    color: white;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background: #39752c;
+}
+
+.mensaje {
+    background: #e9f3e5;
+    color: #315c34;
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 850px) {
+
+    .contenedor {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        padding: 15px;
+    }
+
+    .sidebar h3 {
+        width: 100%;
+    }
+
+    .sidebar a {
+        margin: 0;
+    }
+
+    .contenido {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .header {
+        height: auto;
+        padding: 18px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .admin-info {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+    .bienvenida h1 {
+        font-size: 24px;
+    }
+}
+

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgroFuturo | Iniciar Sesión</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         ENCABEZADO Y MENÚ
+    ====================================================== -->
+
+    <header class="header">
+
+        <a href="index_principal.php" class="logo">
+
+            <img src="logo.png" alt="Logo AgroFuturo">
+
+            <span>
+                <strong>AGRO<span>FUTURO</span></strong>
+                <small>Innovación y tecnología para el campo</small>
+            </span>
+
+        </a>
+
+
+        <!-- Botón para celulares -->
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            ☰
+        </button>
+
+
+        <!-- Menú de navegación -->
+
+        <nav id="nav">
+
+               <a href="index_principal.php">Inicio</a>
+
+    <a href="quienessomos.php">Quiénes Somos</a>
+
+    <a href="noticias.php">Novedades</a>
+
+    <a href="calendario.php">Calendario</a>
+
+    <a href="clima.php">Clima</a>
+
+    <a href="cultivos.php">Cultivos</a>
+
+    <a href="foro.php">Foro</a>
+
+    <a href="ciclo_planta.php">Ciclo planta</a>
+
+    <a href="contacto.php">Contáctanos</a>
+
+    <a href="iniciodesesion.php">Iniciar Sesión</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="auth-page">
+
+        <section class="auth-box">
+
+            <h1>Bienvenido de nuevo</h1>
+
+            <p class="auth-subtitle">
+                Inicia sesión en tu cuenta de AgroFuturo
+            </p>
+
+
+            <!-- FORMULARIO DE INICIO DE SESIÓN -->
+
+            <form id="loginForm" action="login.php" method="POST">
+
+                <!-- Correo -->
+
+                <label for="loginCorreo">
+                    Correo electrónico
+                </label>
+
+                <input
+                    type="email"
+                    id="loginCorreo"
+                    name="loginCorreo"
+                    placeholder="ejemplo@correo.com"
+                    autocomplete="email"
+                    required
+                >
+
+
+                <!-- Contraseña -->
+
+                <label for="loginPassword">
+                    Contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    name="loginPassword"
+                    placeholder="Ingresa tu contraseña"
+                    autocomplete="current-password"
+                    required
+                >
+
+
+                <!-- Opciones -->
+
+                <div class="form-options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            name="recordarme"
+                        >
+
+                        <span>Recordarme</span>
+
+                    </label>
+
+
+                    <a href="#">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+
+                </div>
+
+
+                <!-- Botón -->
+
+                <button type="submit" class="auth-button">
+                    Iniciar Sesión
+                </button>
+
+            </form>
+
+
+            <!-- Separador -->
+
+            <div class="auth-divider">
+                <span>o</span>
+            </div>
+
+
+            <!-- Registro -->
+
+            <p class="register-text">
+
+                ¿No tienes una cuenta?
+
+                <a href="registro.php">
+                    Regístrate
+                </a>
+
+            </p>
+
+
+            <!-- Regresar al inicio -->
+
+            <a href="index_principal.php" class="back-home">
+                ← Volver al inicio
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         PIE DE PÁGINA
+    ====================================================== -->
+
+    <footer>
+
+        <span>
+            © 2026 AgroFuturo - Todos los derechos reservados
+        </span>
+
+        <div>
+            Síguenos en: &nbsp; ◎ &nbsp; f &nbsp; ▶ &nbsp; ◉
+        </div>
+
+        <i>
+            Juntos cultivamos el futuro ♡
+        </i>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -11,16 +11,20 @@ body {
     font-family: 'DM Sans', sans-serif;
     background: #f4f7f2;
     color: #243b2d;
+    line-height: 1.5;
 }
 
+/* ENCABEZADO */
+
 .header {
-    height: 80px;
+    min-height: 80px;
     background: #17352d;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 35px;
+    padding: 15px 35px;
+    gap: 20px;
 }
 
 .logo {
@@ -37,6 +41,7 @@ body {
 }
 
 .btn-cerrar {
+    display: inline-block;
     background: #4d8f38;
     color: white;
     text-decoration: none;
@@ -49,12 +54,18 @@ body {
     background: #67a64f;
 }
 
+/* ESTRUCTURA PRINCIPAL */
+
 .contenedor {
     display: flex;
+    align-items: stretch;
     min-height: calc(100vh - 80px);
 }
 
+/* MENU LATERAL */
+
 .sidebar {
+    flex: 0 0 245px;
     width: 245px;
     background: white;
     padding: 30px 18px;
@@ -87,11 +98,36 @@ body {
     font-weight: 700;
 }
 
+/* CONTENIDO */
+
 .contenido {
     flex: 1;
-    padding: 40px;
     min-width: 0;
+    padding: 40px;
 }
+
+.contenido h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.contenido h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    margin-bottom: 22px;
+}
+
+.contenido h3 {
+    margin-bottom: 12px;
+}
+
+.contenido > p {
+    color: #748174;
+    margin-bottom: 20px;
+}
+
+/* BIENVENIDA */
 
 .bienvenida {
     background: linear-gradient(120deg, #17352d, #386d42);
@@ -111,11 +147,7 @@ body {
     color: #e0ebdf;
 }
 
-.contenido h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 25px;
-    margin-bottom: 22px;
-}
+/* TARJETAS DEL PANEL */
 
 .tarjetas {
     display: grid;
@@ -162,6 +194,8 @@ body {
     font-size: 14px;
 }
 
+/* INFORMACION */
+
 .informacion {
     background: white;
     border-radius: 15px;
@@ -179,7 +213,148 @@ body {
     line-height: 1.7;
 }
 
+/* FORMULARIOS GENERALES */
+
+.contenido form {
+    margin-bottom: 20px;
+}
+
+.contenido form label {
+    display: inline-block;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.contenido form input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]),
+.contenido form select,
+.contenido form textarea {
+    max-width: 100%;
+    padding: 12px;
+    border: 1px solid #d4ddd2;
+    border-radius: 8px;
+    background: white;
+    color: #243b2d;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+}
+
+.contenido form input:focus,
+.contenido form select:focus,
+.contenido form textarea:focus {
+    outline: 2px solid #a8c99c;
+    border-color: #4d8f38;
+}
+
+.contenido form textarea {
+    resize: vertical;
+}
+
+/* CALENDARIO AGRICOLA */
+
+.contenido-calendario {
+    width: 100%;
+    min-width: 0;
+}
+
+.contenido-calendario .encabezado-pagina {
+    margin-bottom: 25px;
+}
+
+.contenido-calendario .encabezado-pagina h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.contenido-calendario .encabezado-pagina p {
+    color: #748174;
+}
+
+.contenido-calendario .estadisticas,
+.contenido-calendario .estadisticas-calendario {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-bottom: 25px;
+}
+
+.contenido-calendario .estadistica,
+.contenido-calendario .tarjeta {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    border: 1px solid #e7ece5;
+}
+
+.contenido-calendario .estadistica h3,
+.contenido-calendario .tarjeta h3 {
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.contenido-calendario .estadistica p,
+.contenido-calendario .tarjeta p {
+    color: #4d8f38;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.contenido-calendario section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #e7ece5;
+    border-radius: 14px;
+}
+
+.contenido-calendario section h2,
+.contenido-calendario section h3 {
+    color: #17352d;
+    margin-bottom: 15px;
+}
+
+.contenido-calendario section > p {
+    color: #748174;
+    margin-bottom: 20px;
+}
+
+.contenido-calendario section form {
+    margin-bottom: 0;
+}
+
+.contenido-calendario section form p {
+    margin-bottom: 18px;
+}
+
+.contenido-calendario section form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.contenido-calendario section form select,
+.contenido-calendario section form textarea {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    padding: 12px;
+    border: 1px solid #d4ddd2;
+    border-radius: 8px;
+    background: #fff;
+    color: #243b2d;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.contenido-calendario section form textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+/* TABLAS */
+
 .tabla-contenedor {
+    width: 100%;
     background: white;
     border-radius: 14px;
     padding: 22px;
@@ -198,19 +373,30 @@ th {
     color: #315c34;
     text-align: left;
     padding: 15px;
+    font-weight: 700;
 }
 
 td {
     padding: 15px;
     border-bottom: 1px solid #edf0eb;
     font-size: 14px;
+    vertical-align: top;
+    overflow-wrap: anywhere;
 }
 
 tr:hover td {
     background: #fafcf9;
 }
 
-.btn {
+td form {
+    margin: 0;
+}
+
+/* BOTONES */
+
+.btn,
+.boton-guardar,
+.boton-eliminar {
     display: inline-block;
     background: #4d8f38;
     color: white;
@@ -221,11 +407,28 @@ tr:hover td {
     cursor: pointer;
     font-family: inherit;
     font-size: 14px;
+    font-weight: 600;
+    transition: background 0.3s;
 }
 
-.btn:hover {
+.btn:hover,
+.boton-guardar:hover {
     background: #39752c;
 }
+
+.boton-eliminar {
+    background: #c0392b;
+}
+
+.boton-eliminar:hover {
+    background: #962d22;
+}
+
+.contenido-calendario section form button {
+    margin-top: 5px;
+}
+
+/* MENSAJES */
 
 .mensaje {
     background: #e9f3e5;
@@ -235,13 +438,37 @@ tr:hover td {
     margin-bottom: 20px;
 }
 
-@media (max-width: 850px) {
+.mensaje-calendario {
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
 
+.mensaje-calendario.exito {
+    background: #e9f3e5;
+    color: #315c34;
+}
+
+.mensaje-calendario.error {
+    background: #fdebea;
+    color: #a12622;
+}
+
+.sin-registros {
+    padding: 20px;
+    text-align: center;
+    color: #748174;
+}
+
+/* ADAPTACION A TABLETAS */
+
+@media (max-width: 850px) {
     .contenedor {
         flex-direction: column;
     }
 
     .sidebar {
+        flex: 0 0 auto;
         width: 100%;
         display: flex;
         flex-wrap: wrap;
@@ -251,6 +478,7 @@ tr:hover td {
 
     .sidebar h3 {
         width: 100%;
+        margin-bottom: 10px;
     }
 
     .sidebar a {
@@ -262,8 +490,9 @@ tr:hover td {
     }
 }
 
-@media (max-width: 600px) {
+/* ADAPTACION A CELULARES */
 
+@media (max-width: 600px) {
     .header {
         height: auto;
         padding: 18px;
@@ -282,8 +511,25 @@ tr:hover td {
         grid-template-columns: 1fr;
     }
 
+    .contenido-calendario .estadisticas,
+    .contenido-calendario .estadisticas-calendario {
+        grid-template-columns: 1fr;
+    }
+
+    .contenido {
+        padding: 15px;
+    }
+
+    .contenido h1,
     .bienvenida h1 {
         font-size: 24px;
     }
-}
 
+    .contenido-calendario section {
+        padding: 16px;
+    }
+
+    .tabla-contenedor {
+        padding: 10px;
+    }
+}

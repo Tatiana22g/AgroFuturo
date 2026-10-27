@@ -1,150 +1,115 @@
 
-<?php
 
+<?php
 session_start();
 
 $usuarioLogueado = isset($_SESSION["id_usuario"]);
-
 $nombreUsuario = $_SESSION["nombre"] ?? "";
+$rolUsuario = $_SESSION["rol"] ?? "";
 
-$esAdmin = $usuarioLogueado && ($_SESSION["rol"] ?? "") === "admin";
-
+$esAdmin = $usuarioLogueado &&
+           in_array($rolUsuario, ["admin", "Administrador"], true);
 ?>
 
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>AgroFuturo | Inicio</title>
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet"
     >
 
-    <link
-        rel="stylesheet"
-        href="styles.css"
-    >
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
 <header class="header">
 
-    <a
-        class="logo"
-        href="index_principal.php"
-    >
-
-        <img
-            src="logo.png"
-            alt="Logo AgroFuturo"
-        >
+    <a class="logo" href="index_principal.php">
+        <img src="logo.png" alt="Logo AgroFuturo">
 
         <span>
-
-            <strong>
-                AGRO<span>FUTURO</span>
-            </strong>
-
-            <small>
-                Innovación y tecnología para el campo
-            </small>
-
+            <strong>AGRO<span>FUTURO</span></strong>
+            <small>Innovación y tecnología para el campo</small>
         </span>
-
     </a>
 
     <button
         class="menu-toggle"
         id="menuToggle"
         aria-label="Abrir menú"
+        type="button"
     >
         ☰
     </button>
 
     <nav class="nav">
 
-    <a href="index_principal.php" class="active">Inicio</a>
-
-    <a href="quienessomos.php">Quiénes Somos</a>
-
-    <a href="noticias.php">Novedades</a>
-
-    <a href="calendario.php">Calendario</a>
-
-    <a href="clima.php">Clima</a>
-
-    <a href="cultivos.php">Cultivos</a>
-
-    <a href="foro.php">Foro</a>
-
-    <a href="ciclo_planta.php">Ciclo planta</a>
-
-    <a href="contacto.php">Contáctanos</a>
+        <a href="index_principal.php" class="active">Inicio</a>
+        <a href="quienessomos.php">Quiénes Somos</a>
+        <a href="noticias.php">Novedades</a>
+        <a href="calendario.php">Calendario</a>
+        <a href="clima.php">Clima</a>
+        <a href="cultivos.php">Cultivos</a>
+        <a href="foro.php">Foro</a>
+        <a href="ciclo_planta.php">Ciclo planta</a>
+        <a href="contacto.php">Contáctanos</a>
 
         <?php if ($esAdmin): ?>
 
             <span class="usuario-saludo">
-                Hola, <?php echo htmlspecialchars($nombreUsuario, ENT_QUOTES, 'UTF-8'); ?>
+                Hola,
+                <?php
+                echo htmlspecialchars(
+                    $nombreUsuario,
+                    ENT_QUOTES,
+                    "UTF-8"
+                );
+                ?>
             </span>
 
             <a
-                href="admin/dashboard.php"
-                class="login-btn"
+                href="/Agrofuturo_pagina/administrador/index.php"
+                class="btn-volver-admin"
             >
-                Panel Admin
+                Volver al perfil administrador
             </a>
 
-            <a
-                href="logout.php"
-                class="login-btn"
-            >
-                Cerrar Sesión
+            <a href="logout.php" class="login-btn">
+                Cerrar sesión
             </a>
 
         <?php elseif ($usuarioLogueado): ?>
 
             <span class="usuario-saludo">
-                Hola, <?php echo htmlspecialchars($nombreUsuario, ENT_QUOTES, 'UTF-8'); ?>
+                Hola,
+                <?php
+                echo htmlspecialchars(
+                    $nombreUsuario,
+                    ENT_QUOTES,
+                    "UTF-8"
+                );
+                ?>
             </span>
 
-            <a
-                href="logout.php"
-                class="login-btn"
-            >
-                Cerrar Sesión
+            <a href="logout.php" class="login-btn">
+                Cerrar sesión
             </a>
 
         <?php else: ?>
 
-            <a
-                href="iniciodesesion.php"
-                class="login-btn"
-            >
-                Iniciar Sesión
+            <a href="iniciodesesion.php" class="login-btn">
+                Iniciar sesión
             </a>
 
         <?php endif; ?>
@@ -152,7 +117,6 @@ $esAdmin = $usuarioLogueado && ($_SESSION["rol"] ?? "") === "admin";
     </nav>
 
 </header>
-
 
 <section class="hero">
 
@@ -171,36 +135,24 @@ $esAdmin = $usuarioLogueado && ($_SESSION["rol"] ?? "") === "admin";
         </span>
 
         <h1>
-
             Tecnología que cultiva
-
             <br>
-
             un <span>mejor mañana</span>
-
         </h1>
 
         <p>
-
             Conectamos a los agricultores con herramientas digitales,
             información precisa y recursos que impulsan el desarrollo
             sostenible del campo.
-
         </p>
 
         <div class="hero-buttons">
 
-            <a
-                href="#herramientas"
-                class="btn"
-            >
+            <a href="#herramientas" class="btn">
                 Explorar plataforma →
             </a>
 
-            <a
-                href="quienessomos.php"
-                class="btn-outline"
-            >
+            <a href="quienessomos.php" class="btn-outline">
                 Conócenos
             </a>
 
@@ -208,294 +160,191 @@ $esAdmin = $usuarioLogueado && ($_SESSION["rol"] ?? "") === "admin";
 
     </div>
 
-
     <div class="hero-info">
 
         <div class="weather-mini">
-
             <div>
-
-                <strong>
-                    24°C
-                </strong>
-
-                <small>
-                    Medellín, Colombia
-                </small>
-
+                <strong>24°C</strong>
+                <small>Medellín, Colombia</small>
             </div>
-
         </div>
 
-
         <div class="farmer-message">
-
             <div>
-
-                <strong>
-                    El campo del futuro
-                </strong>
-
-                <small>
-                    Empieza con buenas decisiones hoy.
-                </small>
-
+                <strong>El campo del futuro</strong>
+                <small>Empieza con buenas decisiones hoy.</small>
             </div>
-
         </div>
 
     </div>
 
 </section>
 
-
 <main>
 
-    <section
-        class="tools"
-        id="herramientas"
-    >
+    <section class="tools" id="herramientas">
 
         <div class="section-title">
 
-            <small>
-                TODO EN UN SOLO LUGAR
-            </small>
+            <small>TODO EN UN SOLO LUGAR</small>
 
             <h2>
-
                 Herramientas pensadas
-
-                <em>
-                    para el campo
-                </em>
-
+                <em>para el campo</em>
             </h2>
 
             <p>
-
                 Descubre recursos diseñados para facilitar
                 la planificación y el trabajo agrícola.
-
             </p>
 
         </div>
 
-
         <div class="cards">
 
-
             <article class="card">
-
-                <h3>
-                    Innovación Agrícola
-                </h3>
+                <h3>Innovación Agrícola</h3>
 
                 <p>
-
                     Tecnología y herramientas para mejorar
                     la planificación y productividad de tus cultivos.
-
                 </p>
 
-                <a href="cultivos.php">
-                    Conocer más →
-                </a>
-
+                <a href="cultivos.php">Conocer más →</a>
             </article>
 
-
             <article class="card">
-
-                <h3>
-                    Apoyo al Campo
-                </h3>
+                <h3>Apoyo al Campo</h3>
 
                 <p>
-
                     Recursos y acompañamiento para fortalecer
                     el desarrollo de las comunidades rurales.
-
                 </p>
 
-                <a href="quienessomos.php">
-                    Conocer más →
-                </a>
-
+                <a href="quienessomos.php">Conocer más →</a>
             </article>
 
-
             <article class="card">
-
-                <h3>
-                    Calendario Agrícola
-                </h3>
+                <h3>Calendario Agrícola</h3>
 
                 <p>
-
                     Organiza tus actividades y consulta
                     las fases lunares relacionadas con tus cultivos.
-
                 </p>
 
-                <a href="calendario.php">
-                    Ver calendario →
-                </a>
-
+                <a href="calendario.php">Ver calendario →</a>
             </article>
 
-
             <article class="card">
-
-                <h3>
-                    Clima Inteligente
-                </h3>
+                <h3>Clima Inteligente</h3>
 
                 <p>
-
                     Consulta información meteorológica
                     para apoyar la planificación de tus cultivos.
-
                 </p>
 
-                <a href="clima.php">
-                    Consultar clima →
-                </a>
-
+                <a href="clima.php">Consultar clima →</a>
             </article>
 
-
             <article class="card">
-
-                <h3>
-                    Información Actualizada
-                </h3>
+                <h3>Información Actualizada</h3>
 
                 <p>
-
                     Noticias, consejos y novedades
                     relacionadas con el sector agrícola.
-
                 </p>
 
-                <a href="noticias.php">
-                    Ver novedades →
-                </a>
-
+                <a href="noticias.php">Ver novedades →</a>
             </article>
 
-
             <article class="card">
-
-                <h3>
-                    Foro Agrícola
-                </h3>
+                <h3>Foro Agrícola</h3>
 
                 <p>
-
                     Comparte experiencias, realiza preguntas
                     y aprende junto a otros usuarios.
-
                 </p>
 
-                <a href="foro.php">
-                    Visitar foro →
-                </a>
-
+                <a href="foro.php">Visitar foro →</a>
             </article>
 
         </div>
 
     </section>
 
-
     <section class="stats">
 
         <div class="stat">
-
-            <strong>
-                2,500+
-            </strong>
-
-            <span>
-                Agricultores activos
-            </span>
-
+            <strong>2,500+</strong>
+            <span>Agricultores activos</span>
         </div>
 
-
         <div class="stat">
-
-            <strong>
-                1,200+
-            </strong>
-
-            <span>
-                Hectáreas gestionadas
-            </span>
-
+            <strong>1,200+</strong>
+            <span>Hectáreas gestionadas</span>
         </div>
 
-
         <div class="stat">
-
-            <strong>
-                35+
-            </strong>
-
-            <span>
-                Comunidades apoyadas
-            </span>
-
+            <strong>35+</strong>
+            <span>Comunidades apoyadas</span>
         </div>
 
-
         <div class="stat">
-
-            <strong>
-                98%
-            </strong>
-
-            <span>
-                Información confiable
-            </span>
-
+            <strong>98%</strong>
+            <span>Información confiable</span>
         </div>
 
     </section>
 
 </main>
 
-
 <footer>
-  <!-- Contenedor para los logos -->
-  <div class="footer-instituciones">
-    <img src="ieru.jfif" alt="Escudo Institución" class="logo-institucion">
-    <img src="pascual.jpg" alt="Pascual Bravo" class="logo-institucion">
-  </div>
 
-  <!-- Derechos reservados -->
-  <div class="footer-copy">
-    <p>© 2026 AgroFuturo - Todos los derechos reservados</p>
-  </div>
+    <div class="footer-instituciones">
 
-  <!-- Redes sociales -->
-  <div class="footer-social">
-    <span>Síguenos en:</span>
-    <a href="#"><i class="bx bxl-facebook"></i></a>
-    <a href="#"><i class="bx bxl-twitter"></i></a>
-    <a href="#"><i class="bx bxl-youtube"></i></a>
-  </div>
+        <img
+            src="ieru.jfif"
+            alt="Escudo Institución"
+            class="logo-institucion"
+        >
 
-  <!-- Slogan -->
-  <div class="footer-slogan">
-    <i>Juntos cultivamos el futuro</i>
-  </div>
+        <img
+            src="pascual.jpg"
+            alt="Pascual Bravo"
+            class="logo-institucion"
+        >
+
+    </div>
+
+    <div class="footer-copy">
+        <p>© 2026 AgroFuturo - Todos los derechos reservados</p>
+    </div>
+
+    <div class="footer-social">
+
+        <span>Síguenos en:</span>
+
+        <a href="#" aria-label="Facebook">
+            <i class="bx bxl-facebook"></i>
+        </a>
+
+        <a href="#" aria-label="Twitter">
+            <i class="bx bxl-twitter"></i>
+        </a>
+
+        <a href="#" aria-label="YouTube">
+            <i class="bx bxl-youtube"></i>
+        </a>
+
+    </div>
+
+    <div class="footer-slogan">
+        <i>Juntos cultivamos el futuro</i>
+    </div>
+
 </footer>
-
 
 <script src="script.js"></script>
 
 </body>
-
 </html>

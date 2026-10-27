@@ -1,15 +1,24 @@
 
 <?php
+
 require_once "verificar_admin.php";
 require_once "../conexion.php";
 
 $mensaje = "";
 $tipoMensaje = "";
 
+$meses = [
+    "Enero", "Febrero", "Marzo", "Abril",
+    "Mayo", "Junio", "Julio", "Agosto",
+    "Septiembre", "Octubre", "Noviembre", "Diciembre"
+];
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
     $accion = $_POST["accion"] ?? "";
 
     if ($accion === "crear") {
+
         $id_cultivo = (int) ($_POST["id_cultivo"] ?? 0);
         $mes_siembra = trim($_POST["mes_siembra"] ?? "");
         $mes_cosecha = trim($_POST["mes_cosecha"] ?? "");
@@ -17,9 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if (
             $id_cultivo > 0 &&
-            $mes_siembra !== "" &&
-            $mes_cosecha !== ""
+            in_array($mes_siembra, $meses, true) &&
+            in_array($mes_cosecha, $meses, true)
         ) {
+
             $sql = "INSERT INTO calendario_agricola
                     (id_cultivo, mes_siembra, mes_cosecha, recomendacion)
                     VALUES (?, ?, ?, ?)";
@@ -27,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt = mysqli_prepare($conexion, $sql);
 
             if ($stmt) {
+
                 mysqli_stmt_bind_param(
                     $stmt,
                     "isss",
@@ -37,38 +48,50 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 );
 
                 if (mysqli_stmt_execute($stmt)) {
-                    $mensaje = "Registro agregado correctamente.";
+                    $mensaje = "Periodo agrícola agregado correctamente.";
                     $tipoMensaje = "exito";
                 } else {
-                    $mensaje = "No se pudo agregar el registro.";
+                    $mensaje = "No se pudo agregar el periodo agrícola.";
                     $tipoMensaje = "error";
                 }
 
                 mysqli_stmt_close($stmt);
+
             } else {
                 $mensaje = "No se pudo preparar la consulta.";
                 $tipoMensaje = "error";
             }
+
         } else {
-            $mensaje = "Completa los campos obligatorios.";
+            $mensaje = "Selecciona un cultivo y los meses correspondientes.";
             $tipoMensaje = "error";
         }
     }
 
     if ($accion === "eliminar") {
+
         $id_calendario = (int) ($_POST["id_calendario"] ?? 0);
 
         if ($id_calendario > 0) {
+
             $sql = "DELETE FROM calendario_agricola
                     WHERE id_calendario = ?";
 
             $stmt = mysqli_prepare($conexion, $sql);
 
             if ($stmt) {
-                mysqli_stmt_bind_param($stmt, "i", $id_calendario);
 
-                if (mysqli_stmt_execute($stmt) && mysqli_stmt_affected_rows($stmt) > 0) {
-                    $mensaje = "Registro eliminado correctamente.";
+                mysqli_stmt_bind_param(
+                    $stmt,
+                    "i",
+                    $id_calendario
+                );
+
+                if (
+                    mysqli_stmt_execute($stmt) &&
+                    mysqli_stmt_affected_rows($stmt) > 0
+                ) {
+                    $mensaje = "Periodo agrícola eliminado correctamente.";
                     $tipoMensaje = "exito";
                 } else {
                     $mensaje = "No se encontró el registro o no se pudo eliminar.";
@@ -76,7 +99,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 mysqli_stmt_close($stmt);
+
+            } else {
+                $mensaje = "No se pudo preparar la consulta.";
+                $tipoMensaje = "error";
             }
+
+        } else {
+            $mensaje = "El registro seleccionado no es válido.";
+            $tipoMensaje = "error";
         }
     }
 }
@@ -87,9 +118,12 @@ $sqlCultivos = "SELECT id_cultivo, nombre
 
 $resultadoCultivos = mysqli_query($conexion, $sqlCultivos);
 
+$totalCultivos = $resultadoCultivos
+    ? mysqli_num_rows($resultadoCultivos)
+    : 0;
+
 $sqlCalendario = "SELECT
                     ca.id_calendario,
-                    ca.id_cultivo,
                     ca.mes_siembra,
                     ca.mes_cosecha,
                     ca.recomendacion,
@@ -105,343 +139,338 @@ $totalRegistros = $resultadoCalendario
     ? mysqli_num_rows($resultadoCalendario)
     : 0;
 
-$totalCultivos = $resultadoCultivos
-    ? mysqli_num_rows($resultadoCultivos)
-    : 0;
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar calendario agrícola | AgroFuturo</title>
+    <title>Calendario agrícola | AgroFuturo</title>
     <link rel="stylesheet" href="estilo_admin.css">
-
-    <style>
-        .contenido-calendario {
-            padding: 25px;
-        }
-
-        .encabezado-pagina {
-            margin-bottom: 25px;
-        }
-
-        .encabezado-pagina h1 {
-            margin-bottom: 8px;
-        }
-
-        .estadisticas-calendario {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 18px;
-            margin-bottom: 25px;
-        }
-
-        .estadistica {
-            background: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
-        }
-
-        .estadistica h3 {
-            margin: 0 0 10px;
-            font-size: 15px;
-        }
-
-        .estadistica p {
-            margin: 0;
-            font-size: 28px;
-            font-weight: bold;
-            color: #3f7d32;
-        }
-
-        .tarjeta-calendario {
-            background: #fff;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
-        }
-
-        .formulario-calendario {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .campo-calendario {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-        }
-
-        .campo-completo {
-            grid-column: 1 / -1;
-        }
-
-        .campo-calendario label {
-            font-weight: 600;
-        }
-
-        .campo-calendario input,
-        .campo-calendario select,
-        .campo-calendario textarea {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 11px;
-            border: 1px solid #d4ddd2;
-            border-radius: 8px;
-            font: inherit;
-        }
-
-        .campo-calendario textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .boton-guardar {
-            background: #3f7d32;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .boton-guardar:hover {
-            background: #2e6125;
-        }
-
-        .tabla-contenedor {
-            overflow-x: auto;
-        }
-
-        .tabla-calendario {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .tabla-calendario th,
-        .tabla-calendario td {
-            padding: 13px;
-            border-bottom: 1px solid #e6eae4;
-            text-align: left;
-            vertical-align: top;
-        }
-
-        .tabla-calendario th {
-            background: #f0f5ed;
-        }
-
-        .boton-eliminar {
-            background: #c0392b;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 8px 12px;
-            cursor: pointer;
-        }
-
-        .mensaje-calendario {
-            padding: 13px 16px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .mensaje-calendario.exito {
-            background: #e6f5e5;
-            color: #28632b;
-        }
-
-        .mensaje-calendario.error {
-            background: #fdebea;
-            color: #a12622;
-        }
-
-        .sin-registros {
-            padding: 20px;
-            text-align: center;
-            color: #666;
-        }
-
-        @media (max-width: 650px) {
-            .contenido-calendario {
-                padding: 15px;
-            }
-
-            .formulario-calendario {
-                grid-template-columns: 1fr;
-            }
-
-            .campo-completo {
-                grid-column: auto;
-            }
-
-            .tarjeta-calendario {
-                padding: 16px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-<div class="contenido-calendario">
+<header class="header">
 
-    <header class="encabezado-pagina">
-        <h1>Calendario agrícola</h1>
-        <p>Administra los periodos de siembra y cosecha de los cultivos registrados en AgroFuturo.</p>
-    </header>
+    <div class="logo">
+        AgroFuturo
+    </div>
 
-    <?php if ($mensaje !== ""): ?>
-        <div class="mensaje-calendario <?= htmlspecialchars($tipoMensaje) ?>">
-            <?= htmlspecialchars($mensaje) ?>
+    <div class="admin-info">
+
+        <span>
+            Hola,
+            <?php
+            echo htmlspecialchars(
+                $_SESSION["nombre"] ?? "Administrador",
+                ENT_QUOTES,
+                "UTF-8"
+            );
+            ?>
+        </span>
+
+        <a href="../logout.php" class="btn-cerrar">
+            Cerrar sesión
+        </a>
+
+    </div>
+
+</header>
+
+<div class="contenedor">
+
+    <aside class="sidebar">
+
+        <h3>Administración</h3>
+
+        <a href="index.php">Inicio</a>
+
+        <a href="usuarios.php">Usuarios</a>
+
+        <a href="noticias.php">Noticias</a>
+
+        <a href="cultivos.php">Cultivos</a>
+
+        <a href="regiones.php">Regiones</a>
+
+        <a href="calendario.php" class="activo">
+            Calendario agrícola
+        </a>
+
+        <a href="fases.php">Fases fenológicas</a>
+
+        <a href="registros.php">Registros fenológicos</a>
+
+        <a href="foro.php">Foro</a>
+
+        <a href="comentarios.php">Comentarios</a>
+
+        <a href="mensajes.php">Mensajes</a>
+
+        <a href="../index_principal.php">Ver página web</a>
+
+    </aside>
+
+    <main class="contenido">
+
+        <h2>Calendario agrícola</h2>
+
+        <p>
+            Administra los periodos de siembra y cosecha
+            de los cultivos registrados en AgroFuturo.
+        </p>
+
+        <?php if ($mensaje !== ""): ?>
+
+            <div class="mensaje">
+                <?php echo htmlspecialchars($mensaje); ?>
+            </div>
+
+        <?php endif; ?>
+
+        <div class="estadisticas">
+
+            <div class="tarjeta">
+                <h3>Cultivos registrados</h3>
+                <p><?php echo $totalCultivos; ?></p>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Periodos agrícolas registrados</h3>
+                <p><?php echo $totalRegistros; ?></p>
+            </div>
+
         </div>
-    <?php endif; ?>
 
-    <section class="estadisticas-calendario">
-        <div class="estadistica">
-            <h3>Cultivos registrados</h3>
-            <p><?= $totalCultivos ?></p>
-        </div>
+        <section>
 
-        <div class="estadistica">
-            <h3>Periodos agrícolas registrados</h3>
-            <p><?= $totalRegistros ?></p>
-        </div>
-    </section>
+            <h3>Agregar periodo agrícola</h3>
 
-    <section class="tarjeta-calendario">
-        <h2>Agregar periodo agrícola</h2>
-        <p>Selecciona un cultivo y define sus meses de siembra y cosecha.</p>
+            <form method="POST" action="calendario.php">
 
-        <?php if ($totalCultivos > 0): ?>
-            <form method="POST" class="formulario-calendario">
                 <input type="hidden" name="accion" value="crear">
 
-                <div class="campo-calendario campo-completo">
-                    <label for="id_cultivo">Cultivo</label>
+                <p>
+                    <label for="id_cultivo">Cultivo:</label>
+                    <br>
+
                     <select name="id_cultivo" id="id_cultivo" required>
+
                         <option value="">Selecciona un cultivo</option>
 
-                        <?php while ($cultivo = mysqli_fetch_assoc($resultadoCultivos)): ?>
-                            <option value="<?= (int) $cultivo["id_cultivo"] ?>">
-                                <?= htmlspecialchars($cultivo["nombre"]) ?>
-                            </option>
-                        <?php endwhile; ?>
-                    </select>
-                </div>
+                        <?php if ($resultadoCultivos): ?>
 
-                <div class="campo-calendario">
-                    <label for="mes_siembra">Mes de siembra</label>
+                            <?php
+                            mysqli_data_seek($resultadoCultivos, 0);
+
+                            while ($cultivo = mysqli_fetch_assoc($resultadoCultivos)):
+                            ?>
+
+                                <option value="<?php echo (int) $cultivo["id_cultivo"]; ?>">
+                                    <?php
+                                    echo htmlspecialchars(
+                                        $cultivo["nombre"],
+                                        ENT_QUOTES,
+                                        "UTF-8"
+                                    );
+                                    ?>
+                                </option>
+
+                            <?php endwhile; ?>
+
+                        <?php endif; ?>
+
+                    </select>
+                </p>
+
+                <p>
+                    <label for="mes_siembra">Mes de siembra:</label>
+                    <br>
+
                     <select name="mes_siembra" id="mes_siembra" required>
-                        <option value="">Selecciona el mes</option>
-                        <?php
-                        $meses = [
-                            "Enero", "Febrero", "Marzo", "Abril",
-                            "Mayo", "Junio", "Julio", "Agosto",
-                            "Septiembre", "Octubre", "Noviembre", "Diciembre"
-                        ];
-                        foreach ($meses as $mes):
-                        ?>
-                            <option value="<?= $mes ?>"><?= $mes ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
 
-                <div class="campo-calendario">
-                    <label for="mes_cosecha">Mes de cosecha</label>
-                    <select name="mes_cosecha" id="mes_cosecha" required>
                         <option value="">Selecciona el mes</option>
+
                         <?php foreach ($meses as $mes): ?>
-                            <option value="<?= $mes ?>"><?= $mes ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
 
-                <div class="campo-calendario campo-completo">
-                    <label for="recomendacion">Recomendaciones</label>
+                            <option value="<?php echo $mes; ?>">
+                                <?php echo $mes; ?>
+                            </option>
+
+                        <?php endforeach; ?>
+
+                    </select>
+                </p>
+
+                <p>
+                    <label for="mes_cosecha">Mes de cosecha:</label>
+                    <br>
+
+                    <select name="mes_cosecha" id="mes_cosecha" required>
+
+                        <option value="">Selecciona el mes</option>
+
+                        <?php foreach ($meses as $mes): ?>
+
+                            <option value="<?php echo $mes; ?>">
+                                <?php echo $mes; ?>
+                            </option>
+
+                        <?php endforeach; ?>
+
+                    </select>
+                </p>
+
+                <p>
+                    <label for="recomendacion">Recomendaciones:</label>
+                    <br>
+
                     <textarea
                         name="recomendacion"
                         id="recomendacion"
+                        rows="4"
                         placeholder="Escribe recomendaciones para la siembra y cosecha..."
                     ></textarea>
-                </div>
+                </p>
 
-                <div class="campo-calendario campo-completo">
-                    <button type="submit" class="boton-guardar">
-                        Guardar periodo agrícola
-                    </button>
-                </div>
+                <button type="submit" class="btn">
+                    Guardar periodo agrícola
+                </button>
+
             </form>
-        <?php else: ?>
-            <p class="sin-registros">
-                Primero debes registrar cultivos en la sección de Cultivos.
-            </p>
-        <?php endif; ?>
-    </section>
 
-    <section class="tarjeta-calendario">
-        <h2>Periodos agrícolas registrados</h2>
+        </section>
 
-        <?php if ($resultadoCalendario && $totalRegistros > 0): ?>
-            <div class="tabla-contenedor">
-                <table class="tabla-calendario">
-                    <thead>
-                        <tr>
-                            <th>Cultivo</th>
-                            <th>Siembra</th>
-                            <th>Cosecha</th>
-                            <th>Recomendaciones</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
+        <section>
 
-                    <tbody>
-                        <?php while ($registro = mysqli_fetch_assoc($resultadoCalendario)): ?>
+            <h3>Periodos agrícolas registrados</h3>
+
+            <?php if ($resultadoCalendario && $totalRegistros > 0): ?>
+
+                <div class="tabla-contenedor">
+
+                    <table>
+
+                        <thead>
+
                             <tr>
-                                <td><?= htmlspecialchars($registro["nombre_cultivo"]) ?></td>
-                                <td><?= htmlspecialchars($registro["mes_siembra"]) ?></td>
-                                <td><?= htmlspecialchars($registro["mes_cosecha"]) ?></td>
-                                <td>
-                                    <?= nl2br(htmlspecialchars($registro["recomendacion"] ?? "")) ?>
-                                </td>
-                                <td>
-                                    <form
-                                        method="POST"
-                                        onsubmit="return confirm('¿Estás segura de que deseas eliminar este periodo agrícola?');"
-                                    >
-                                        <input type="hidden" name="accion" value="eliminar">
-                                        <input
-                                            type="hidden"
-                                            name="id_calendario"
-                                            value="<?= (int) $registro["id_calendario"] ?>"
-                                        >
-                                        <button type="submit" class="boton-eliminar">
-                                            Eliminar
-                                        </button>
-                                    </form>
-                                </td>
+                                <th>Cultivo</th>
+                                <th>Siembra</th>
+                                <th>Cosecha</th>
+                                <th>Recomendaciones</th>
+                                <th>Acciones</th>
                             </tr>
-                        <?php endwhile; ?>
-                    </tbody>
-                </table>
-            </div>
-        <?php else: ?>
-            <p class="sin-registros">
-                Todavía no hay periodos agrícolas registrados.
-            </p>
-        <?php endif; ?>
-    </section>
 
-    <p>
-        <a href="index.php">Volver al panel administrativo</a>
-    </p>
+                        </thead>
+
+                        <tbody>
+
+                            <?php while ($registro = mysqli_fetch_assoc($resultadoCalendario)): ?>
+
+                                <tr>
+
+                                    <td>
+                                        <?php
+                                        echo htmlspecialchars(
+                                            $registro["nombre_cultivo"],
+                                            ENT_QUOTES,
+                                            "UTF-8"
+                                        );
+                                        ?>
+                                    </td>
+
+                                    <td>
+                                        <?php
+                                        echo htmlspecialchars(
+                                            $registro["mes_siembra"],
+                                            ENT_QUOTES,
+                                            "UTF-8"
+                                        );
+                                        ?>
+                                    </td>
+
+                                    <td>
+                                        <?php
+                                        echo htmlspecialchars(
+                                            $registro["mes_cosecha"],
+                                            ENT_QUOTES,
+                                            "UTF-8"
+                                        );
+                                        ?>
+                                    </td>
+
+                                    <td>
+                                        <?php
+                                        echo nl2br(
+                                            htmlspecialchars(
+                                                $registro["recomendacion"] ?? "",
+                                                ENT_QUOTES,
+                                                "UTF-8"
+                                            )
+                                        );
+                                        ?>
+                                    </td>
+
+                                    <td>
+
+                                        <form
+                                            method="POST"
+                                            action="calendario.php"
+                                            onsubmit="return confirm('¿Seguro que deseas eliminar este periodo agrícola?');"
+                                        >
+
+                                            <input
+                                                type="hidden"
+                                                name="accion"
+                                                value="eliminar"
+                                            >
+
+                                            <input
+                                                type="hidden"
+                                                name="id_calendario"
+                                                value="<?php echo (int) $registro["id_calendario"]; ?>"
+                                            >
+
+                                            <button type="submit" class="btn">
+                                                Eliminar
+                                            </button>
+
+                                        </form>
+
+                                    </td>
+
+                                </tr>
+
+                            <?php endwhile; ?>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            <?php else: ?>
+
+                <p>
+                    Todavía no hay periodos agrícolas registrados.
+                </p>
+
+            <?php endif; ?>
+
+        </section>
+
+        <p>
+            <a href="index.php">Volver al panel administrativo</a>
+        </p>
+
+    </main>
 
 </div>
 
 </body>
+
 </html>
+
